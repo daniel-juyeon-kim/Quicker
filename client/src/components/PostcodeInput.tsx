@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface controls {
     onFocus: React.FocusEventHandler<HTMLInputElement>
-    pageNext: ()=> void
+    pageNext: () => void
 }
 
 interface refs {
@@ -95,44 +95,44 @@ const PostcodeInputs = ({ refs, controls }: PostcodeInputsType) => {
 
     return (
         <>
-        <Container>
-        <Box ref={refs.inputDiv}>
-            <div>
-                <ReqFont>
-                    출발지
-                </ReqFont>
-            </div>
-            <Divfont>
-                주소
-            </Divfont>
-            <div>
-            <Ip type="text" onFocus={controls.onFocus} ref={refs.inputBox} placeholder="주소" />
-            <Ip type="text" placeholder="세부주소" />
-            </div>
-            <Div0>
-                <Divfont1>
-                    이름
-                </Divfont1>
-                <Divfont2>
-                    연락처
-                </Divfont2>
-            </Div0>
-            <Div0>
-                <DivName>
-                    <Ip type="text" placeholder="이름" />
-                </DivName>
-                <Divcall>
-                    <Ip type="text" placeholder="010" />
-                </Divcall>
-                <Divcall>
-                    <Ip type="text" placeholder="010" />
-                </Divcall>
-                <Divcall1>
-                    <Ip type="text" placeholder="010" />
-                </Divcall1>
-            </Div0>
-        </Box>
-        </Container>
+            <Container>
+                <Box ref={refs.inputDiv}>
+                    <div>
+                        <ReqFont>
+                            출발지
+                        </ReqFont>
+                    </div>
+                    <Divfont>
+                        주소
+                    </Divfont>
+                    <div>
+                        <Ip type="text" onFocus={controls.onFocus} ref={refs.inputBox} placeholder="주소" />
+                        <Ip type="text" placeholder="세부주소" />
+                    </div>
+                    <Div0>
+                        <Divfont1>
+                            이름
+                        </Divfont1>
+                        <Divfont2>
+                            연락처
+                        </Divfont2>
+                    </Div0>
+                    <Div0>
+                        <DivName>
+                            <Ip type="text" placeholder="이름" />
+                        </DivName>
+                        <Divcall>
+                            <Ip type="text" placeholder="010" />
+                        </Divcall>
+                        <Divcall>
+                            <Ip type="text" placeholder="010" />
+                        </Divcall>
+                        <Divcall1>
+                            <Ip type="text" placeholder="010" />
+                        </Divcall1>
+                    </Div0>
+                </Box>
+            </Container>
             <ConfirmBtn content={"다음단계"} confirmLogic={controls.pageNext} />
         </>
     )
