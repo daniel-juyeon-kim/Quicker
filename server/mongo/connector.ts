@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
-import config from "../config";
 
-const connectMongo = async (databaseName : string) => {
-  if (config.db.mongo === undefined) {
-    throw new Error("dotenv의 MONGO_CHAT의 값이 없음");
-  } else {
-    return mongoose.createConnection(config.db.mongo , {dbName: databaseName});
+export class MongoConnector {
+  private mongoUrl : string
+  
+  constructor(mongoUrl : string) {
+    this.mongoUrl = mongoUrl
   }
-};
-
-export default connectMongo
+  
+  public connect(databaseName : string) {
+    return mongoose.createConnection(this.mongoUrl , {dbName: databaseName});
+  }
+}

@@ -1,13 +1,12 @@
-import { Connection } from "mongoose";
-import connectMongo from "../connector";
 import MessageSchema from "../schemas/message";
+import { mongoService } from "../../service";
 
 require("dotenv").config();
 
 export class MessageModel {
   async create(messageObjcet: MessageObject) {
     try {
-      const conn = await connectMongo("chat");
+      const conn = await mongoService.connect("chat");
       const Message = conn.model(String(messageObjcet.roomName), MessageSchema);
       const userMessage = new Message({
         id: messageObjcet.id,
@@ -23,7 +22,7 @@ export class MessageModel {
 
   async find(roomName: string) {
     try {
-      const conn = await connectMongo("chat");
+      const conn = await mongoService.connect("chat");
       const messageModel = conn.model(roomName, MessageSchema);
       const messages = await messageModel.find();
       await conn.destroy();
@@ -34,7 +33,7 @@ export class MessageModel {
   }
 
   async findRecent(orderNum: number) {
-    const connection = await connectMongo("chat");
+    const connection = await mongoService.connect("chat");
     const messageModel = connection.model(String(orderNum), MessageSchema);
     const recentMessage = await messageModel
       .findOne()

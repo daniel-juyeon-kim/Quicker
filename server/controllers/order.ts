@@ -7,8 +7,7 @@ import { averageInstance, locationInstance, orderInstance, roomInstance, userIns
 import sequelizeConnector from "../maria/connector/sequelize-connector";
 import { initModels } from "../maria/models/init-models";
 import { currentLocationInstance, imageInstance } from "../mongo/command";
-import connectMongo from "../mongo/connector";
-import { cryptoInstance, nhnApi } from "../service";
+import { cryptoInstance, mongoService, nhnApi } from "../service";
 import { HTTPError } from "../types/http-error";
 
 initModels(sequelizeConnector);
@@ -90,7 +89,7 @@ export class OrderController {
         X: body.X,
         Y: body.Y,
       };
-      const connection = await connectMongo("realTimeLocation");
+      const connection = await mongoService.connect("realTimeLocation");
       await currentLocationInstance.create(connection, address, loaction);
       res.send({ msg: "done" });
     } catch (error) {
@@ -103,7 +102,7 @@ export class OrderController {
     try {
       const query = req.query;
       const address = query.quicker;
-      const connection = await connectMongo("realTimeLocation");
+      const connection = await mongoService.connect("realTimeLocation");
       const location = await currentLocationInstance.find(connection, address);
       res.json(location);
     } catch (error) {
@@ -116,7 +115,7 @@ export class OrderController {
     try {
       const query = req.query;
       const orderId = query.orderNum;
-      const connection = await connectMongo("orderComplete");
+      const connection = await mongoService.connect("orderComplete");
       if (typeof orderId !== "string") {
         throw new Error("TypeError : orderId be string");
       }
@@ -141,7 +140,7 @@ export class OrderController {
       const documentFile = req.file;
       const orderNum = body.orderNum;
       const bufferImage = documentFile.buffer;
-      const connection = await connectMongo("orderComplete");
+      const connection = await mongoService.connect("orderComplete");
       await imageInstance.create(connection, orderNum, bufferImage);
       res.send({ msg: "done" });
     } catch (error) {
@@ -157,7 +156,7 @@ export class OrderController {
       if (typeof orderId !== "string") {
         throw new Error("TypeError : orderId be string");
       }
-      const connection = await connectMongo("orderFail");
+      const connection = await mongoService.connect("orderFail");
       const image = await imageInstance.findFailImage(connection, orderId);
       if (image === null || undefined) {
         res.send(null);
@@ -179,7 +178,7 @@ export class OrderController {
       const bufferImage = documentFile.buffer;
       const orderNum = body.orderNum;
       const reason = body.reason;
-      const connection = await connectMongo("orderFail");
+      const connection = await mongoService.connect("orderFail");
       await imageInstance.createFailImage(
         connection,
         orderNum,
