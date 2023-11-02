@@ -1,7 +1,12 @@
+import express from "express";
+import { createServer } from "http";
 import { Server } from "socket.io";
+
 import { messageInstance } from "./mongo/command";
 
-const io = new Server({
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -57,7 +62,9 @@ const main = () => {
   }
 };
 
-io.listen(8080);
+// app.listen(HTTP_PORT, () => console.log(chalk.blueBright(`[RUNNING] | App is listening on port ${HTTP_PORT} !`)));
+
+httpServer.listen(8080, () => console.log(`[RUNNING] | App is listening on port ${8080} !`));
 interface Message {
   data: string;
   sender: string;

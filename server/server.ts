@@ -14,7 +14,6 @@ const startServer = () => {
     
     port.init(app)
     
-    // chat(server)
 }
 
 startServer();

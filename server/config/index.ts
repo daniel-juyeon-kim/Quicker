@@ -23,7 +23,6 @@ export default {
     },
     local: {
       http: process.env.HTTP_LOCAL_SERVER_PORT,
-      chat: process.env.HTTP_LOCAL_CHAT_SERVER_PORT,
       https: process.env.HTTPS_LOCAL_SERVER_PORT,
     },
   },
