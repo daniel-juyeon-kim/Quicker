@@ -4,8 +4,8 @@
         "name": "server",
         "script": "server.ts",
         "watch": false,
-        "instances"  : "2",
-        "exec_mode"  : "cluster",
+        "instances" : "2",
+        "exec_mode" : "cluster",
         "args" : [ "--color" ]
       }
   ]
