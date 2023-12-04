@@ -11,5 +11,8 @@
 /config
 
 #logs
-# logs
 /logs/*
+
+# todo
+TODO.*
+todo.*
