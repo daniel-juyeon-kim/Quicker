@@ -1,44 +1,44 @@
-# Quicker
+## Quicker
 
 블록체인 기반 퀵, 배달 중개 플랫폼
 
 Quicker는 스마트컨트랙(Smart contract)으로 의뢰인과 배송원 사이의 계약을 자동화 하여 금융기관의 매개없이 결제와 배송이 이뤄지고 투표를 통해 권력을 분산한 Web3 플랫폼입니다.
 
-## 관련 기술
+### 사용 기술
 
-- **Front:** React, TypeScript, Zustand, TMapAPI, Kotlin(Android)
-- **Back:** Node.js, TypeScript, Express.js, Sequelize, Mongoose, SlackAPI, Naver SMS API
-- **Blockchain:** Solidity, Klaytn
-- **DB:** MariaDB, MongoDB
-- **Compute:** AWS EC2, GCP Compute Engine, CloudType
-- **Network:** Cloudflare
-- **Tool:** Git, Slack, Figma, ERDCloud
+**Front:** React, TypeScript, Zustand, TMapAPI, Kotlin(Android)\
+**Back:** Node.js, TypeScript, Express.js, Sequelize, Mongoose, SlackAPI, Naver SMS API\
+**Blockchain:** Solidity, Klaytn\
+**DB:** MariaDB, MongoDB\
+**Compute:** AWS EC2, GCP Compute Engine, CloudType\
+**Network:** Cloudflare\
+**Tool:** Git, Slack, Figma, ERDCloud
 
-## 역할
+### 역할
 
-- **배영준**: 프론트
-- **이수현**: 블록체인, 프론트
-- **김주연**: [백엔드](docs/backend/보고서.md), 프론트
+- **배영준:** 프론트
+- **이수현:** 블록체인, 프론트
+- **김주연:** [백엔드](docs/backend/보고서.md), 프론트
 
-## 시스템 구조
+### 시스템 구조
 
-### 시스템 아키텍처
+#### 시스템 아키텍처
 
 ![Alt text](docs/images/system-structure.svg)
 
-### 데이터베이스 ERD
+#### 데이터베이스 ERD
 
 ![Alt text](<docs/images/데이터베이스 구조.png>)
 
-### 거래 프로세스
+#### 거래 프로세스
 
 ![Alt text](https://github.com/dltndn/Quicker_web_part/assets/70008866/ba37075e-ff43-4919-a7c8-26c3f892935f)
 
-### 스마트컨트랙
+#### 스마트컨트랙
 
 ![Alt text](https://github.com/dltndn/Quicker_web_part/assets/70008866/4d58b4e5-445f-4dac-a82e-e0f5e9486a96)
 
-### 주요 기능
+#### 주요 기능
 
 - 암호화폐 지갑 연결방식의 로그인 시스템
 - 스마트 컨트랙을 활용한 탈중앙화 자동 결제 기능 구현
